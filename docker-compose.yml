@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  medium-exporter:
+    build: .
+    container_name: medium-exporter
+    environment:
+      - RAPIDAPI_KEY=${RAPIDAPI_KEY}
+    volumes:
+      - ./exports:/app/exports
+    command: ["python", "fetch_medium_posts.py", "--download-images", "--prepend-order"]
+
